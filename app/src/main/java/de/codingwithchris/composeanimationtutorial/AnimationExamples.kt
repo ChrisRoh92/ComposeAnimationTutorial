@@ -179,5 +179,40 @@ fun CrossFadeAnimation(modifier: Modifier = Modifier)
 @Composable
 fun ExpandAndCollapseAnimation(modifier: Modifier = Modifier)
 {
-    // TODO: Implement!
+    var isExpanded by remember { mutableStateOf(false) }
+
+    val expandCollapseHeight = animateDpAsState(
+        targetValue = if (isExpanded) 200.dp else 80.dp,
+        animationSpec = tween(durationMillis = 500)
+    ).value
+
+    Column(
+        modifier = modifier
+            .fillMaxHeight()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Box(
+            modifier = Modifier
+                .height(expandCollapseHeight)
+                .fillMaxWidth()
+                .background(Color.Blue),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = if (isExpanded) "Expanded" else "Collapsed",
+                color = Color.White
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = { isExpanded = !isExpanded },
+            shape = RoundedCornerShape(16.dp)
+        ) {
+            Text(text = if (isExpanded) "Collapse" else "Expand")
+        }
+    }
 }
