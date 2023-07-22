@@ -80,13 +80,6 @@ fun MainContent()
             Content.SLIDE_IN_ANIMATION -> SlideInAnimation(Modifier.weight(1f))
             else -> Text("Error")
         }
-
-        if (selectedAnimation == Content.SLIDE_IN_ANIMATION)
-        {
-            SlideInAnimation(Modifier.weight(1f))
-        }
-
-
     }
 }
 
