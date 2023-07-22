@@ -97,16 +97,20 @@ fun ButtonBar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
     ) {
-        Button(onClick = {onClickListener(Content.SLIDE_IN_ANIMATION)}) {
-            Text("SlideInAnimation")
-        }
-        Spacer(Modifier.padding(horizontal = 4.dp))
         Button(onClick = {onClickListener(Content.PULSATING_BUTTON)}) {
             Text("PulsatingButton")
         }
         Spacer(Modifier.padding(horizontal = 4.dp))
-        Button(onClick = {onClickListener(Content.OTHER_ANIMATION)}) {
-            Text("OtherAnimation")
+        Button(onClick = {onClickListener(Content.CROSS_FADE_ANIMATION)}) {
+            Text("CrossFadeIn")
+        }
+        Spacer(Modifier.padding(horizontal = 4.dp))
+        Button(onClick = {onClickListener(Content.EXPAND_COLLAPSE_ANIMATION)}) {
+            Text("ExpandCollapse")
+        }
+        Spacer(Modifier.padding(horizontal = 4.dp))
+        Button(onClick = {onClickListener(Content.SLIDE_IN_ANIMATION)}) {
+            Text("SlideInAnimation")
         }
     }
 }
