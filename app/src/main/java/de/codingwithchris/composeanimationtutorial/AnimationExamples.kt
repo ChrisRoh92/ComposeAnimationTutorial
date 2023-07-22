@@ -8,7 +8,40 @@ import androidx.compose.ui.Modifier
 fun SlideInAnimation(
     modifier: Modifier = Modifier
 ) {
-    // TODO: Implement!
+    var isVisible by remember { mutableStateOf(false) }
+
+    val slideInOffset = animateDpAsState(
+        targetValue = if (isVisible) 0.dp else 200.dp,
+        animationSpec = tween(durationMillis = 500)
+    ).value
+
+    Column(
+        modifier = modifier
+            .fillMaxHeight()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            onClick = { isVisible = !isVisible },
+            shape = RoundedCornerShape(16.dp)
+        ) {
+            Text(text = if (isVisible) "Hide" else "Show")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp)
+                .offset(x = slideInOffset)
+                .background(Color.LightGray),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = "Slide In Content", color = Color.White)
+        }
+    }
 }
 
 
